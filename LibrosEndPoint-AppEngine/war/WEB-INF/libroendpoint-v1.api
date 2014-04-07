@@ -1,0 +1,225 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://grand-landing-460.appspot.com/_ah/api",
+  "name" : "libroendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://grand-landing-460.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "jtristan.com",
+  "ownerName" : "jtristan.com",
+  "packagePath" : "librosendpoint.entidades",
+  "methods" : {
+    "libroendpoint.removeLibro" : {
+      "path" : "libro/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jtristan.librosendpoint.entidades.LibroEndpoint.removeLibro",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "libroendpoint.insertLibro" : {
+      "path" : "libro",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ "128678154032-i9f4dut797bbh1d41nkf7rf82l20lipl.apps.googleusercontent.com" ],
+      "clientIds" : [ "128678154032-4c4ad69bmu6i8uh0ukq8ed78eu1687sk.apps.googleusercontent.com", "292824132082.apps.googleusercontent.com", "128678154032-i9f4dut797bbh1d41nkf7rf82l20lipl.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jtristan.librosendpoint.entidades.LibroEndpoint.insertLibro1",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "libroendpoint.updateLibro" : {
+      "path" : "libro",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jtristan.librosendpoint.entidades.LibroEndpoint.updateLibro",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "libroendpoint.listLibro" : {
+      "path" : "libro",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jtristan.librosendpoint.entidades.LibroEndpoint.listLibro",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "libroendpoint.getLibro" : {
+      "path" : "libro/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.jtristan.librosendpoint.entidades.LibroEndpoint.getLibro",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Libro" : {
+        "id" : "Libro",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "titulo" : {
+            "type" : "string"
+          },
+          "autor" : {
+            "type" : "string"
+          },
+          "puntuacion" : {
+            "type" : "integer"
+          },
+          "isbn" : {
+            "type" : "string"
+          },
+          "usuario_logeado" : {
+            "$ref" : "User"
+          }
+        }
+      },
+      "User" : {
+        "id" : "User",
+        "type" : "object",
+        "properties" : {
+          "email" : {
+            "type" : "string"
+          },
+          "authDomain" : {
+            "type" : "string"
+          },
+          "userId" : {
+            "type" : "string"
+          },
+          "federatedIdentity" : {
+            "type" : "string"
+          },
+          "nickname" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResponse_Libro" : {
+        "id" : "CollectionResponse_Libro",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Libro"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.jtristan.librosendpoint.entidades.LibroEndpoint.removeLibro" : {
+      },
+      "com.jtristan.librosendpoint.entidades.LibroEndpoint.insertLibro1" : {
+        "request" : {
+          "$ref" : "Libro"
+        },
+        "response" : {
+          "$ref" : "Libro"
+        }
+      },
+      "com.jtristan.librosendpoint.entidades.LibroEndpoint.updateLibro" : {
+        "request" : {
+          "$ref" : "Libro"
+        },
+        "response" : {
+          "$ref" : "Libro"
+        }
+      },
+      "com.jtristan.librosendpoint.entidades.LibroEndpoint.listLibro" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Libro"
+        }
+      },
+      "com.jtristan.librosendpoint.entidades.LibroEndpoint.getLibro" : {
+        "response" : {
+          "$ref" : "Libro"
+        }
+      }
+    }
+  }
+}
